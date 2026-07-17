@@ -1,0 +1,39 @@
+Hi! 👋
+
+This is a small, self-contained tool that runs a LIVE, read-only Google Ads audit
+directly inside Claude Cowork (the web version — you do NOT need to install any app).
+It only ever READS your account (never changes bids, budgets, or anything).
+
+HOW TO SET IT UP (about 30 min, all in the browser)
+1. Open a Claude Cowork session on the web.
+2. Upload this zip, then tell Claude:
+   "Unzip google-ads-audit-live.zip and move the folder into .claude/skills/ to install it as a skill."
+3. Ask Claude to confirm it's intact:
+   "Run: node scripts/gads.mjs --list  (from the skill folder)"
+   — if it prints a list of workflows, you're good.
+4. Open SETUP-COWORK.md and follow it once. It walks you through, in the browser:
+   - a Google Cloud OAuth client,
+   - a Google Ads manager (MCC) developer token,
+   - minting a refresh token in Google's OAuth Playground,
+   - then copy .env.example to .env and paste in YOUR OWN values.
+
+THEN JUST ASK CLAUDE
+   "Run a full Google Ads audit for the last 30 days."
+Claude pulls the real data and writes the audit. You can also do search-term audits,
+conversion-tracking checks, custom date ranges, etc. — see SKILL.md.
+
+THE ONE THING THAT CAN HOLD UP A *LIVE* AUDIT (please read)
+Your Google Ads developer token has an "access level" (check it in the MCC under
+Admin -> API Center):
+   - Test      = blocked on real accounts (new tokens start here)
+   - Explorer  = CAN read real accounts (plenty for an audit) — sometimes granted automatically
+   - Basic/Standard = also fine
+If yours is still "Test", click "Apply for Basic access" and complete advertiser
+verification on an account under the MCC to speed it up. In 2026 that review can take
+a couple of weeks. Everything else can be finished while you wait.
+
+SECURITY
+This package contains NO credentials — only a blank .env.example template. You create
+your own .env and it stays private to your Cowork session. Never paste secrets into chat.
+
+Questions? Ping me. Have fun!

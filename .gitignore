@@ -1,0 +1,6 @@
+# Defensive: no credentials, ever. Only the .env.example template belongs in git.
+.env
+.env.*
+!.env.example
+node_modules/
+*.log
