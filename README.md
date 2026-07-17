@@ -52,7 +52,7 @@ node scripts/analyze.mjs '{"testType":"generic","arms":[{"name":"Control","visit
 
 ## About
 
-Built by Athul — growth marketing + AI agent systems. The monitoring skills document
+Built by Eldhose — growth marketing + AI agent systems. The monitoring skills document
 agents that run against live ad accounts inside a larger orchestrator (run engine,
 event log, structured findings with deterministic ids, durable NDJSON sink) that isn't
 part of this repo.
